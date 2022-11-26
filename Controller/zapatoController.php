@@ -35,6 +35,14 @@
             $this->Model->eliminarZapato($_REQUEST['id']); // el id se optiene de la url
             header("Location:index.php");
         }
+
+        public function editar(){
+            $cz = new zapatoModel();
+            if(isset($_REQUEST['id'])){
+                $cz = $this->Model->cargarId($_REQUEST['id']);
+            }
+            include_once("View/editar.php");        
+        }
     }
 
 ?>
