@@ -82,5 +82,15 @@
                 die($e->getMessage());
             }
         }
+
+        public function eliminarZapato($id){
+            try {
+                $query = "DELETE FROM zapato WHERE id_zapato=?";
+                $smt = $this->con->prepare($query);
+                $smt->execute(array($id));
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
     }
 ?>
