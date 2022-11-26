@@ -18,15 +18,14 @@
             include_once("View/guardar.php");
         }
 
-        public function crearZapatos(){
+        public function crearzapatos(){
             $cz = new zapatoModel();
             $cz->color = $_POST['txtColor'];
-            $cz->estilo = $_POST['cmbEstilo'];
-            $cz->genero = $_POST['cmbGenero'];
-            $cz->talla = $_POST['cmbTalla'];
             $cz->cantidad = $_POST['txtCantidad'];
             $cz->precio = $_POST['txtPrecio'];
-            $cz->valor_total = $_POST['txtValor_total'];
+            $cz->id_estilo = $_POST['cmbEstilo'];
+            $cz->id_genero = $_POST['cmbGenero'];
+            $cz->id_talla = $_POST['cmbTalla'];
 
             $this->Model->crearZapatos($cz);
             header("Location:index.php");
