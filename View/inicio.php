@@ -29,6 +29,7 @@
                         <th class="white-text center-align">Cantidad</th>
                         <th class="white-text center-align">Precio</th>
                         <th class="white-text center-align">Valor Total</th>
+                        <th class="white-text center-align">Eliminar</th>
                     </tr>
                     <?php foreach($this->Model->listarZapatos() as $lz) : ?>
                         <tr>
@@ -39,6 +40,9 @@
                             <td class="center-align"><?php echo $lz->cantidad; ?></td>
                             <td class="center-align">$<?php echo $lz->precio; ?></td>
                             <td class="center-align">$<?php echo $lz->valor_total; ?></td>
+                            <td class="center-align">
+                                <a href="?c=eliminar&id=<?php echo $lz->id_zapato ?>" class="btn red z-depth-2">Eliminar</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
