@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <form method="POST" action="?c=guardar">
+        <form action="?c=crearzapatos" method="POST">
             <div class="row">
                 <div class="col m12">
                     <div class="card blue z-depth-4 white-text center-align">
@@ -75,14 +75,6 @@
                 <div class="col m3">Precio: </div>
                 <div class="col m3">
                     <input type="text" name="txtPrecio">
-                </div>
-                <div class="col m3"></div>
-            </div>
-            <div class="row">
-                <div class="col m3"></div>
-                <div class="col m3">Valor Total: </div>
-                <div class="col m3">
-                    <input type="text" name="txtValor_total">
                 </div>
                 <div class="col m3"></div>
             </div>
