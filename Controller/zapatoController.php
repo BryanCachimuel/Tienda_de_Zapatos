@@ -30,6 +30,11 @@
             $this->Model->crearZapatos($cz);
             header("Location:index.php");
         }
+
+        public function eliminar(){
+            $this->Model->eliminarZapato($_REQUEST['id']); // el id se optiene de la url
+            header("Location:index.php");
+        }
     }
 
 ?>
