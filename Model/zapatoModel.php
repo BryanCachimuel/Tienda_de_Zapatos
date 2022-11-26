@@ -83,6 +83,17 @@
             }
         }
 
+        public function cargarId($id){
+            try {
+                $query = "SELECT * FROM zapato WHERE id_zapato=?";
+                $smt = $this->con->prepare($query);
+                $smt->execute(array($id));
+                return $smt->fetch(PDO::FETCH_OBJ); 
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
+
         public function eliminarZapato($id){
             try {
                 $query = "DELETE FROM zapato WHERE id_zapato=?";
