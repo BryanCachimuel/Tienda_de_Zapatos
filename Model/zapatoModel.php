@@ -94,6 +94,22 @@
             }
         }
 
+        public function actualizarZapato($data){
+            try {
+                $query = "UPDATE zapato SET color=?,cantidad=?,precio=?,valor_total=?,id_estilo=?,id_genero=?,id_talla=? WHERE id_zapato=?";
+                $this->con->prepare($query)->execute(array($data->color, 
+                                                           $data->cantidad, 
+                                                           $data->precio, 
+                                                           $data->valor_total = $data->cantidad * $data->precio, 
+                                                           $data->id_estilo, 
+                                                           $data->id_genero, 
+                                                           $data->id_talla,
+                                                           $data->id_zapato));
+            } catch (Exception $e) {
+                die($e->getMessage());
+            } 
+        }
+
         public function eliminarZapato($id){
             try {
                 $query = "DELETE FROM zapato WHERE id_zapato=?";
