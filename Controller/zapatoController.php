@@ -57,6 +57,10 @@
             }
             include_once("View/editar.php");        
         }
+
+        public function regresar(){
+            header("Location:index.php");
+        }
     }
 
 ?>
