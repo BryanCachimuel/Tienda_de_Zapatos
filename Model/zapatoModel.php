@@ -26,7 +26,7 @@
                 $query = "SELECT z.id_zapato, z.color, z.precio, z.cantidad, z.valor_total, e.estilos, t.tallas, g.generos 
                           FROM zapato z INNER JOIN estilo e on z.id_estilo = e.id_estilo 
                           INNER JOIN talla t on z.id_talla = t.id_talla 
-                          INNER JOIN genero g on z.id_genero = g.id_genero";
+                          INNER JOIN genero g on z.id_genero = g.id_genero ORDER BY id_zapato ASC";
                 $smt = $this->con->prepare($query);
                 $smt->execute();
                 return $smt->fetchAll(PDO::FETCH_OBJ); // se hace el retorno de un objeto
