@@ -12,6 +12,9 @@
         public $id_estilo;
         public $id_genero;
         public $id_talla;
+
+        public $estilos;
+        public $tallas;
         
         public function __construct(){
             try {
@@ -83,6 +86,24 @@
             }
         }
 
+        public function crearEstilos(zapatoModel $data){
+            try {
+               $query = "INSERT INTO estilo(estilos) VALUES(?)";
+               $this->con->prepare($query)->execute(array($data->estilos)); 
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
+
+        public function crearTallas(zapatoModel $data){
+            try {
+               $query = "INSERT INTO talla(tallas) VALUES(?)";
+               $this->con->prepare($query)->execute(array($data->tallas)); 
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
+
         public function cargarId($id){
             try {
                 $query = "SELECT * FROM zapato WHERE id_zapato=?";
@@ -115,6 +136,16 @@
                 $query = "DELETE FROM zapato WHERE id_zapato=?";
                 $smt = $this->con->prepare($query);
                 $smt->execute(array($id));
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
+
+        public function cantidadZapatos(){
+            try {
+                $query = "SELECT SUM(cantidad) FROM zapato";
+                $smt = $this->con->prepare($query);
+                return $smt->fetchColumn();
             } catch (Exception $e) {
                 die($e->getMessage());
             }
