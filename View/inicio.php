@@ -17,9 +17,18 @@
                 </div>
             </div>
         </div>
+        <div class="row center-align">
+            <div class="col m4">
+                <a href="?c=crear" id="boton" class="btn green z-depth-3">Registrar Zapatos</a>
+            </div>
+            <div class="col m4"></div>
+            <div class="col m4">
+                <a href="?c=categorias" id="boton" class="btn blue z-depth-3">Registrar Categorias</a>
+            </div>
+        </div>
+    
         <div class="row">
             <div class="col m12">
-                <a href="?c=crear" id="boton" class="btn btn-success z-depth-3">Registrar Zapatos</a>
                 <table class="table-responsive z-depth-3">
                     <tr class="black">
                     <th class="white-text center-align">ID</th>
@@ -51,7 +60,16 @@
                             </td>
                         </tr>
                     <?php endforeach; ?>
-                </table>
+                </table>       
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m4">
+                <div class="card">
+                        <div class="card-body">
+                          <p><?php echo $this->Model->cantidadZapatos(); ?></p>  
+                        </div>
+                </div>
             </div>
         </div>
     </div>
