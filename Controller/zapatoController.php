@@ -18,6 +18,24 @@
             include_once("View/guardar.php");
         }
 
+        public function categorias(){
+            include_once("View/categorias.php");
+        }
+
+        public function crearEstilos(){
+            $cze = new zapatoModel();
+            $cze->estilos = $_POST['txtEstilos'];
+            $this->Model->crearEstilos($cze);
+            header("Location:index.php");
+        }
+
+        public function crearTallas(){
+            $czt = new zapatoModel();
+            $czt->tallas = $_POST['txtTallas'];
+            $this->Model->crearTallas($czt);
+            header("Location:index.php");
+        }
+
         public function crearzapatos(){
             $cz = new zapatoModel();
             $cz->color = $_POST['txtColor'];
@@ -56,6 +74,12 @@
                 $cz = $this->Model->cargarId($_REQUEST['id']);
             }
             include_once("View/editar.php");        
+        }
+
+        public function contar(){
+            $cz = new zapatoModel();
+            $this->Model->cantidadZapatos();
+            header("Location:index.php");
         }
 
         public function regresar(){
