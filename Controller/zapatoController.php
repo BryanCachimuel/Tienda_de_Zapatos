@@ -29,10 +29,24 @@
             header("Location:index.php");
         }
 
+        public function crearGeneros(){
+            $czg = new zapatoModel();
+            $czg->generos = $_POST['txtGeneros'];
+            $this->Model->crearGeneros($czg);
+            header("Location:index.php");
+        }
+
         public function crearTallas(){
             $czt = new zapatoModel();
             $czt->tallas = $_POST['txtTallas'];
             $this->Model->crearTallas($czt);
+            header("Location:index.php");
+        }
+
+        public function crearMarcas(){
+            $ctm = new zapatoModel();
+            $ctm->marcas = $_POST['txtMarcas'];
+            $this->Model->crearMarca($ctm);
             header("Location:index.php");
         }
 
