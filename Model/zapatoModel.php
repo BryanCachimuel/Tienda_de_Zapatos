@@ -14,7 +14,9 @@
         public $id_talla;
 
         public $estilos;
+        public $generos;
         public $tallas;
+        public $marcas;
         
         public function __construct(){
             try {
@@ -95,6 +97,15 @@
             }
         }
 
+        public function crearGeneros(zapatoModel $data){
+            try {
+                $query = "INSERT INTO genero(generos) VALUES(?)";
+                $this->con->prepare($query)->execute(array($data->generos)); 
+             } catch (Exception $e) {
+                 die($e->getMessage());
+             }
+        }
+
         public function crearTallas(zapatoModel $data){
             try {
                $query = "INSERT INTO talla(tallas) VALUES(?)";
@@ -102,6 +113,15 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }
+        }
+
+        public function crearMarca(zapatoModel $data){
+            try {
+                $query = "INSERT INTO marca(marcas) VALUES(?)";
+                $this->con->prepare($query)->execute(array($data->marcas)); 
+             } catch (Exception $e) {
+                 die($e->getMessage());
+             } 
         }
 
         public function cargarId($id){
