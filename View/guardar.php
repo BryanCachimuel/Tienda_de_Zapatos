@@ -20,6 +20,18 @@
             </div>
             <div class="row">
                 <div class="col m3"></div>
+                <div class="col m3">Marca: </div>
+                <div class="col m3">
+                    <select name="cmbMarca">
+                        <?php foreach($this->Model->listarMarca() as $mr) : ?>
+                            <option value="<?php echo $mr->id_marca ?>"><?php echo $mr->marcas ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col m3"></div>
+            </div>
+            <div class="row">
+                <div class="col m3"></div>
                 <div class="col m3">Color: </div>
                 <div class="col m3">
                     <input type="text" name="txtColor">
