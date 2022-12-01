@@ -31,7 +31,8 @@
             <div class="col m12">
                 <table class="table-responsive z-depth-3">
                     <tr class="black">
-                    <th class="white-text center-align">ID</th>
+                        <th class="white-text center-align">ID</th>
+                        <th class="white-text center-align">Marca</th>
                         <th class="white-text center-align">Color</th>
                         <th class="white-text center-align">Estilo</th>
                         <th class="white-text center-align">Género</th>
@@ -45,6 +46,7 @@
                     <?php foreach($this->Model->listarZapatos() as $lz) : ?>
                         <tr>
                             <td class="center-align"><?php echo $lz->id_zapato; ?></td>
+                            <td class="center-align"><?php echo $lz->marcas; ?></td>
                             <td class="center-align"><?php echo $lz->color; ?></td>
                             <td class="center-align"><?php echo $lz->estilos; ?></td>
                             <td class="center-align"><?php echo $lz->generos; ?></td>
