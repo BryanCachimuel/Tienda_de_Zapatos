@@ -12,6 +12,7 @@
         public $id_estilo;
         public $id_genero;
         public $id_talla;
+        public $id_marca;
 
         public $estilos;
         public $generos;
@@ -28,14 +29,26 @@
 
         public function listarZapatos(){
             try{
-                $query = "SELECT z.id_zapato, z.color, z.precio, z.cantidad, z.valor_total, e.estilos, t.tallas, g.generos 
+                $query = "SELECT z.id_zapato, z.color, z.precio, z.cantidad, z.valor_total, e.estilos, t.tallas, g.generos, m.marcas
                           FROM zapato z INNER JOIN estilo e on z.id_estilo = e.id_estilo 
                           INNER JOIN talla t on z.id_talla = t.id_talla 
-                          INNER JOIN genero g on z.id_genero = g.id_genero ORDER BY id_zapato ASC";
+                          INNER JOIN genero g on z.id_genero = g.id_genero 
+                          INNER JOIN marca m on z.id_marca = m.id_marca ORDER BY id_zapato ASC";
                 $smt = $this->con->prepare($query);
                 $smt->execute();
                 return $smt->fetchAll(PDO::FETCH_OBJ); // se hace el retorno de un objeto
             }catch(Exception $e){
+                die($e->getMessage());
+            }
+        }
+
+        public function listarMarca(){
+            try {
+                $query = "SELECT * FROM marca";
+                $smt = $this->con->prepare($query);
+                $smt->execute();
+                return $smt->fetchAll(PDO::FETCH_OBJ); 
+            } catch (Exception $e) {
                 die($e->getMessage());
             }
         }
@@ -75,14 +88,16 @@
 
         public function crearZapatos(zapatoModel $data){
             try {
-                $query = "INSERT INTO zapato(color,cantidad,precio,valor_total,id_estilo,id_genero,id_talla) VALUES(?,?,?,?,?,?,?)";
+                $query = "INSERT INTO zapato(color,cantidad,precio,valor_total,id_estilo,id_genero,id_talla,id_marca) VALUES(?,?,?,?,?,?,?,?)";
                 $this->con->prepare($query)->execute(array($data->color, 
                                                            $data->cantidad, 
                                                            $data->precio, 
                                                            $data->valor_total = $data->cantidad * $data->precio, 
                                                            $data->id_estilo, 
                                                            $data->id_genero, 
-                                                           $data->id_talla));
+                                                           $data->id_talla,
+                                                           $data->id_marca
+                                                        ));
             } catch (Exception $e) {
                 die($e->getMessage());
             }
