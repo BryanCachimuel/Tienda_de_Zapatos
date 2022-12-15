@@ -7,14 +7,17 @@
     <title>Tienda de Zapatos</title>
     <link rel="stylesheet" href="Resources/css/materialize.css">
     <link rel="stylesheet" href="Resources/css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col m12">
-                <div class="card blue z-depth-4 white-text center-align">
-                    <h2>Tienda de Zapatos</h2>
-                </div>
+                <a href="?c=regresar">
+                    <div class="card blue z-depth-4 white-text center-align">
+                        <h2>Tienda de Zapatos</h2>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="row center-align">
@@ -43,7 +46,11 @@
                         <th class="white-text center-align">Eliminar</th>
                         <th class="white-text center-align">Actualizar</th>
                     </tr>
-                    <?php foreach($this->Model->listarZapatos() as $lz) : ?>
+                    <?php 
+                        $cantidadTotal = 0;
+                        $valorTotal = 0;
+                        foreach($this->Model->listarZapatos() as $lz) : 
+                    ?>
                         <tr>
                             <td class="center-align"><?php echo $lz->id_zapato; ?></td>
                             <td class="center-align"><?php echo $lz->marcas; ?></td>
@@ -61,22 +68,38 @@
                                 <a href="?c=editar&id=<?php echo $lz->id_zapato ?>" class="btn green z-depth-2">Actualizar</a>
                             </td>
                         </tr>
-                    <?php endforeach; ?>
+                        <?php 
+                            $cantidadTotal += $lz->cantidad;
+                            $valorTotal += $lz->valor_total;
+                        ?>
+
+                    <?php endforeach; ?>  
                 </table>       
             </div>
         </div>
-        <div class="row">
-            <div class="col m4">
-                <div class="card">
-                        <div class="card-body">
-                          <p><?php echo $this->Model->cantidadZapatos(); ?></p>  
+    </div>
+               
+        <div class="container">
+            <div class="row">
+                <div class="col m4">
+                    <div class="card blue darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">Cantidad de Zapatos: <?php echo $cantidadTotal;  ?>  </span>
                         </div>
+                    </div>
+                </div>
+                <div class="col m4"></div>
+                <div class="col m4">
+                    <div class="card blue darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">Valor Total: $<?php echo $valorTotal;  ?>  </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
+        </div>                
     <script src="Resources/js/jquery-3.6.1.min.js"></script>
     <script src="Resources/js/materialize.js"></script>
+   
 </body>
 </html>
