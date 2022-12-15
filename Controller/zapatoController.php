@@ -91,12 +91,6 @@
             include_once("View/editar.php");        
         }
 
-        public function contar(){
-            $cz = new zapatoModel();
-            $this->Model->cantidadZapatos();
-            header("Location:index.php");
-        }
-
         public function regresar(){
             header("Location:index.php");
         }
