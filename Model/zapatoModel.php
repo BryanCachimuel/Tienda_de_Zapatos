@@ -175,15 +175,5 @@
                 die($e->getMessage());
             }
         }
-
-        public function cantidadZapatos(){
-            try {
-                $query = "SELECT SUM(cantidad) FROM zapato";
-                $smt = $this->con->prepare($query);
-                return $smt->fetchColumn();
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-        }
     }
 ?>
