@@ -78,6 +78,7 @@
             $cz->id_estilo = $_POST['cmbEstilo'];
             $cz->id_genero = $_POST['cmbGenero'];
             $cz->id_talla = $_POST['cmbTalla'];
+            $cz->id_marca = $_POST['cmbMarca'];
 
             $this->Model->actualizarZapato($cz);
             header("Location:index.php");
