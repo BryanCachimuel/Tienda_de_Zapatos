@@ -152,7 +152,7 @@
 
         public function actualizarZapato($data){
             try {
-                $query = "UPDATE zapato SET color=?,cantidad=?,precio=?,valor_total=?,id_estilo=?,id_genero=?,id_talla=? WHERE id_zapato=?";
+                $query = "UPDATE zapato SET color=?,cantidad=?,precio=?,valor_total=?,id_estilo=?,id_genero=?,id_talla=?,id_marca=? WHERE id_zapato=?";
                 $this->con->prepare($query)->execute(array($data->color, 
                                                            $data->cantidad, 
                                                            $data->precio, 
@@ -160,6 +160,7 @@
                                                            $data->id_estilo, 
                                                            $data->id_genero, 
                                                            $data->id_talla,
+                                                           $data->id_marca,
                                                            $data->id_zapato));
             } catch (Exception $e) {
                 die($e->getMessage());
