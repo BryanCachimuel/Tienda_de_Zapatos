@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col m12">
-                <a href="?=regresar">
+                <a href="?c=regresar">
                     <div class="card blue z-depth-4 white-text center-align">
                         <h2>Tienda de Zapatos</h2>
                     </div>
